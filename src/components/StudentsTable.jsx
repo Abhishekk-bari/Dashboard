@@ -64,7 +64,7 @@ const StudentsTable = () => {
       </div>
 
       {/* Table Section */}
-      <div className="overflow-x-auto  h-screen ">
+      <div className="overflow-x-auto  h-screen no-scrollbar">
         <table className="w-full text-left">
           <thead>
             <tr className="border-b">

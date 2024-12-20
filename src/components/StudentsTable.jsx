@@ -17,7 +17,7 @@ const StudentsTable = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("https://dashboard-backend-nkoz.onrender.com");
+        const response = await axios.get("http://localhost:5000/students");
         setStudents(response.data);
       } catch (error) {
         console.error("Error fetching students:", error);
@@ -29,7 +29,7 @@ const StudentsTable = () => {
   // Add new student handler
   const handleAddStudent = async () => {
     try {
-      const response = await axios.post("https://dashboard-backend-nkoz.onrender.com/students", newStudent);
+      const response = await axios.post("http://localhost:5000/students", newStudent);
       setStudents([...students, response.data]);
       setNewStudent({ name: "", cohort: "AY 2024-25", courses: [] }); // Reset form
     } catch (error) {

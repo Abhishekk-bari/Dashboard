@@ -6,6 +6,7 @@ import { CiBellOn } from "react-icons/ci";
 import { LuSettings2 } from "react-icons/lu";
 
 const TopBar = () => {
+  
   return (
     <div className="pl-6 border-b border-gray-200 p-4 flex flex-col md:flex-row md:justify-between items-center space-y-4 md:space-y-0">
       {/* Search Bar */}

@@ -12,7 +12,7 @@ model Student {
   name        String
   cohort      String
   courses     String[]
-  date_joined DateTime // Changed to DateTime if you need both date and time
+  date_joined DateTime @db.Timestamp(6)
   last_login  DateTime @db.Timestamp(6)
   status      String
 

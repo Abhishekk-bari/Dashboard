@@ -17,7 +17,7 @@ const StudentsTable = () => {
   useEffect(() => {
     const fetchStudents = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/students");
+        const response = await axios.get("https://dashboard-backend-nkoz.onrender.com");
         setStudents(response.data);
       } catch (error) {
         console.error("Error fetching students:", error);
@@ -29,7 +29,7 @@ const StudentsTable = () => {
   // Add new student handler
   const handleAddStudent = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/students", newStudent);
+      const response = await axios.post("https://dashboard-backend-nkoz.onrender.com/students", newStudent);
       setStudents([...students, response.data]);
       setNewStudent({ name: "", cohort: "AY 2024-25", courses: [] }); // Reset form
     } catch (error) {
@@ -40,7 +40,7 @@ const StudentsTable = () => {
   // Delete student handler
   const deleteStudent = async (id) => {
     try {
-      await axios.delete(`http://localhost:5000/students/${id}`);
+      await axios.delete(`https://dashboard-backend-nkoz.onrender.com/students/${id}`);
       alert("Student deleted successfully");
       // Update the UI by removing the deleted student from the state
       setStudents(students.filter(student => student.id !== id));
@@ -64,7 +64,7 @@ const StudentsTable = () => {
       };
 
       const response = await axios.put(
-        `http://localhost:5000/students/${editStudent.id}`,
+        `https://dashboard-backend-nkoz.onrender.com/students/${editStudent.id}`,
         updatedStudent
       );
 

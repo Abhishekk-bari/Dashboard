@@ -88,10 +88,10 @@ const StudentsTable = () => {
   );
 
   const courseImages = {
-    "CBSE 9 Science": "/public/sir.png",
-    "CBSE 9 Math": "/public/mam.png",
-    "CBSE 10 Science": "/public/sir.png",
-    "CBSE 10 Math": "/public/mam.png",
+    "CBSE 9 Science": "/assets/sir.png",
+    "CBSE 9 Math": "/assets/mam.png",
+    "CBSE 10 Science": "/assets/sir.png",
+    "CBSE 10 Math": "/assets/mam.png",
   };
 
   return (
@@ -181,7 +181,7 @@ const StudentsTable = () => {
                           className="flex items-center gap-2 bg-gray-100 px-2 py-1 rounded-lg"
                         >
                           <img
-                            src={courseImages[course] || "/public/mam.png"}
+                            src={courseImages[course] || "/assets/mam.png"}
                             alt={course}
                             className="w-6 h-6 rounded-full"
                           />

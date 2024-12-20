@@ -13,6 +13,7 @@ const StudentsTable = () => {
   const years = ["AY 2024-25", "AY 2023-24", "AY 2022-23"];
   const courses = ["CBSE 9", "CBSE 10", "CBSE 11"];
 
+  // Fetching students data
   useEffect(() => {
     const fetchStudents = async () => {
       try {
@@ -25,6 +26,7 @@ const StudentsTable = () => {
     fetchStudents();
   }, []);
 
+  // Add new student handler
   const handleAddStudent = async () => {
     try {
       const response = await axios.post("http://localhost:5000/students", newStudent);
@@ -34,11 +36,11 @@ const StudentsTable = () => {
       console.error("Error adding student:", error.response ? error.response.data : error.message);
     }
   };
-  
 
+  // Delete student handler
   const deleteStudent = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/students/${id}`);
+      await axios.delete(`http://localhost:5000/students/${id}`);
       alert("Student deleted successfully");
       // Update the UI by removing the deleted student from the state
       setStudents(students.filter(student => student.id !== id));
@@ -46,27 +48,26 @@ const StudentsTable = () => {
       console.error("Error deleting student: ", error);
     }
   };
-  
-  
-  
 
+  // Edit student handler
   const handleEditStudent = (student) => {
     setEditStudent(student);
     setEditName(student.name);
   };
 
+  // Update student handler
   const handleUpdateStudent = async () => {
     try {
       const updatedStudent = {
         ...editStudent,
         name: editName, // Ensure the updated name is included
       };
-  
+
       const response = await axios.put(
         `http://localhost:5000/students/${editStudent.id}`,
         updatedStudent
       );
-  
+
       // Update the local state
       setStudents((prevStudents) =>
         prevStudents.map((student) =>
@@ -78,8 +79,8 @@ const StudentsTable = () => {
       console.error("Error updating student:", error);
     }
   };
-  
 
+  // Filtering students based on selected year and course
   const filteredStudents = students.filter(
     (student) =>
       student.cohort === selectedYear &&
@@ -104,7 +105,7 @@ const StudentsTable = () => {
               aria-label="Select Academic Year"
               value={selectedYear}
               onChange={(e) => setSelectedYear(e.target.value)}
-              className="block w-36 pl-2 pr-8 py-2 border border-gray-300 bg-gray-300 font-semibold rounded-md shadow-sm focus:outline-none"
+              className="block w-36 pl-2 pr-8 py-2 border border-gray-300 bg-gray-300 font-semibold rounded-md shadow-sm focus:outline-none sm:w-48"
             >
               {years.map((year) => (
                 <option key={year} value={year}>
@@ -120,7 +121,7 @@ const StudentsTable = () => {
               aria-label="Select Course"
               value={selectedCourse}
               onChange={(e) => setSelectedCourse(e.target.value)}
-              className="block w-36 pl-3 pr-10 py-2 font-semibold border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none"
+              className="block w-36 pl-3 pr-10 py-2 font-semibold border border-gray-300 bg-gray-300 rounded-md shadow-sm focus:outline-none sm:w-48"
             >
               {courses.map((course) => (
                 <option key={course} value={course}>
@@ -180,9 +181,7 @@ const StudentsTable = () => {
                           className="flex items-center gap-2 bg-gray-100 px-2 py-1 rounded-lg"
                         >
                           <img
-                            src={
-                              courseImages[course] || "/images/placeholder.png"
-                            }
+                            src={courseImages[course] || "/images/placeholder.png"}
                             alt={course}
                             className="w-6 h-6 rounded-full"
                           />
@@ -214,9 +213,7 @@ const StudentsTable = () => {
                   <td>
                     <span
                       className={`inline-block w-3 h-3 rounded-full ${
-                        student.status === "online"
-                          ? "bg-green-500"
-                          : "bg-red-500"
+                        student.status === "online" ? "bg-green-500" : "bg-red-500"
                       }`}
                     ></span>
                   </td>

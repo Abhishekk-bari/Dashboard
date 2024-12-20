@@ -1,6 +1,7 @@
 import { FaTachometerAlt, FaUsers, FaBook, FaQuestionCircle, FaChartBar, FaCog } from 'react-icons/fa';
 import logo from '../assets/Vector.png';
 
+//sidebar stuff
 const Sidebar = () => {
   return (
     <div className="w-64 bg-white border-r border-gray-200 flex flex-col pt-2">
@@ -28,3 +29,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
+
